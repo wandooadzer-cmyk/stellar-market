@@ -51,6 +51,8 @@ pub enum DisputeError {
     ExclusionNotConfirmed = 25,
     ReplacementUnavailable = 26,
     InsufficientActiveArbitrators = 27,
+    EvidenceCapReached = 28,
+    DuplicateEvidence = 29,
 }
 
 #[contracttype]
@@ -1920,13 +1922,13 @@ impl DisputeContract {
 
         // Check if evidence count has reached the cap
         if evidence.len() >= MAX_EVIDENCE_PER_DISPUTE {
-            return Err(DisputeError::Unauthorized);
+            return Err(DisputeError::EvidenceCapReached);
         }
 
         // Check if the evidence hash already exists
         for existing in evidence.iter() {
             if existing.evidence_hash == evidence_hash {
-                return Err(DisputeError::Unauthorized);
+                return Err(DisputeError::DuplicateEvidence);
             }
         }
 
