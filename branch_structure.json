@@ -1,0 +1,18 @@
+{
+  "default_branch": "main",
+  "branches": [
+    "fix/replace-substr-backgroundSync",
+    "main",
+    "origin"
+  ],
+  "parent": {
+    "fix/replace-substr-backgroundSync": "main",
+    "main": null,
+    "origin": "main"
+  },
+  "order": [
+    "main",
+    "fix/replace-substr-backgroundSync",
+    "origin"
+  ]
+}
